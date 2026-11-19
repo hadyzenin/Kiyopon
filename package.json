@@ -1,0 +1,17 @@
+{
+  "name": "Kiyopon",
+  "author": "Hady Zen'in",
+  "description": "Chatbot WhatsApp",
+  "version": "beta",
+  "main": "index.js",
+  "requires": true,
+  "engines": {
+    "node": "16.x"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  }
+}
