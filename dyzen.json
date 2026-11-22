@@ -1,0 +1,16 @@
+{
+  "awalan": ".",
+  "nama": "Kiyopon",
+  "admin": ["121908804755470@lid"],
+  "nomor": "6283165195387",
+  "warna": "#4682B4",
+  "aikey": "",
+  "maintain": false,
+  "chatdm": true,
+  "imgbbkey": "",
+  "zonawaktu": "Asia/Jakarta",
+  "setting": {
+    "selfListen": false,
+    "listenEvents": true
+  }
+}
