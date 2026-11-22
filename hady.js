@@ -272,7 +272,7 @@ async function downloadMedia(msg) {
             if (reason !== DisconnectReason.loggedOut) {
                 console.log(logo.info + "Reconnecting dalam 5 detik...");
                 isReconnecting = false;
-                setTimeout(() => startBot(), 5000);
+                setTimeout(() => hadyBot(), 5000);
             } else {
                 console.log(logo.error + "Sesi expired, hapus folder sessi dan login ulang.");
                 isReconnecting = false;
