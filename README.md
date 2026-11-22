@@ -1,4 +1,4 @@
-![ayano]() 
+![ayano](https://raw.githubusercontent.com/hadyzenin/Ayanokoji-Kiyotaka/refs/heads/main/assets/ayanokoji.png) 
 
 <h1 align="center">KIYOPON V1 </h1>
 
