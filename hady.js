@@ -1,5 +1,5 @@
 /* Hady Zen'in - WhatsApp Version */
-/* dibuat oleh Hady with love - Copyright HadyZenin 2025 */
+/* dibuat oleh Hady with love - Copyright HadyZenin 2026 */
 
 const express = require('express');
 const app = express();
