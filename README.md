@@ -22,15 +22,46 @@ Mentahan perintah
 ```hady
 module.exports = {
   hady: {
-    nama: "",
+    nama: "contoh",
     penulis: "Hady Zen",
-    kuldown: 10,
+    kuldown: 5,
     peran: 0,
-    tutor: ""
+    tutor: "daftar full fungsi"
   },
-
-  Ayanokoji: async function ({ api, event, args, getStream, getData, setUser, fbid }) {
-    api.sendMessage("Hady Zen'in", event.threadID, event.messageID);
+  Ayanokoji: async function ({ api, event, args, getData, setData, getAllData }) {
+    api.sendMessage("", event.threadID, event.messageID)
+    api.sendMessage("", event.threadID, null)
+    api.sendImage("", "", event.threadID, event.messageID)
+    api.sendImage("", event.threadID)
+    api.sendImage("", event.threadID, event.messageID)
+    api.sendVideo("", "", event.threadID, event.messageID)
+    api.sendVideo("", event.threadID)
+    api.sendVideo("", event.threadID, event.messageID)
+    api.sendSticker("", event.threadID, event.messageID)
+    api.sendSticker("", event.threadID)
+    api.sendAudio("", event.threadID, event.messageID, false)
+    api.sendAudio("", event.threadID, event.messageID, true)
+    api.sendFile("", "", event.threadID, event.messageID)
+    api.sendFile("", "", event.threadID)
+    api.react("", event.threadID, event.messageID)
+    api.deleteMessage(event.threadID, event.messageID)
+    api.sendTyping(event.threadID)
+    api.getGroupInfo(event.threadID)
+    api.getProfilePicture(event.senderID)
+    api.getProfilePicture(event.threadID)
+    getData(event.senderID)
+    setData(event.senderID, {})
+    getAllData()
+    event.threadID
+    event.messageID
+    event.senderID
+    event.isGroup
+    event.type
+    event.reply
+    event.replySender
+    args.join(" ")
+    args[0]
+    args.slice(1).join(" ")
   }
 };
 ```
