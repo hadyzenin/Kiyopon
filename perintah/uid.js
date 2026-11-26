@@ -4,12 +4,16 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 10,
     peran: 0,
-    tutor: ".uid"
+    tutor: ".uid <reply/kosong>",
+    kategori: "info"
   },
   Ayanokoji: async function ({ api, event }) {
-    const { threadID, messageID } = event;
-    return api.sendMessage(event.senderID,
-      threadID, messageID
+    const targetID = event.repliedSender || event.senderID;
+
+    return api.sendMessage(
+      `${targetID}`,
+      event.threadID,
+      event.messageID
     );
   }
 };
