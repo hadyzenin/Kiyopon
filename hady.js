@@ -1,4 +1,4 @@
-/* Hady Zen'in - WhatsApp Version */
+/* Hady Zen'in */
 /* dibuat oleh Hady with love - Copyright HadyZenin 2026 */
 
 const express = require('express');
@@ -9,7 +9,7 @@ const path = require('path');
 const { DyAI } = require('./hady-zen/func');
 const { version } = require('./package');
 const gradient = require('gradient-string');
-const { awalan, nama, admin, warna, maintain, chatdm, imgbbkey, setting, zonawaktu, nomor: nomorBot } = require('./dyzen');
+const { awalan, nama, admin, warna, maintain, chatdm, imgbbkey, setting, nomorBot } = require('./dyzen');
 const sharp = require('sharp');
 const readline = require('readline');
 const pino = require('pino');
@@ -17,16 +17,12 @@ const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
 ffmpeg.setFfmpegPath(ffmpegPath);
 const { kuldown } = require('./hady-zen/kuldown');
-const moment = require('moment-timezone');
-const now = moment.tz(zonawaktu);
 const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, downloadContentFromMessage } = require("@whiskeysockets/baileys");
 
 const kiyopon = logo.ayanokoji;
-const tanggal = now.format('YYYY-MM-DD');
-const waktu = now.format('HH:mm:ss');
-global.Ayanokoji = { awalan: awalan, nama: nama, warna: warna, admin: admin, logo: logo, imgbbkey: imgbbkey, maintain: maintain, waktu: waktu, tanggal: tanggal };
+global.Ayanokoji = { awalan: awalan, nama: nama, warna: warna, admin: admin, logo: logo, imgbbkey: imgbbkey };
 
-//DATA AYANOKOJI
+//DATA AYANOKOJI 
 let data = {};
 if (fs.existsSync(path.join('hady-zen', 'kiyopon.db'))) {
     data = JSON.parse(fs.readFileSync(path.join('hady-zen', 'kiyopon.db'), 'utf-8'));
@@ -90,7 +86,7 @@ async function hadyBot() {
     if (isReconnecting) return;
     isReconnecting = true;
     const { version } = await fetchLatestBaileysVersion();
-    const { state, saveCreds } = await useMultiFileAuthState('./hady-zen/sessi');
+    const { state, saveCreds } = await useMultiFileAuthState('./session');
 
     const sock = makeWASocket({
         version,
@@ -199,8 +195,8 @@ sendSticker: async (bufferOrPath, threadID, messageID, isVideo = false) => {
             stickerBuffer = Buffer.from(await res.arrayBuffer());
         }
         if (isVideo) {
-            const inputPath = `./temp_${Date.now()}.mp4`;
-            const outputPath = `./temp_${Date.now()}.webp`;
+const inputPath = `./hady-zen/assets/${Date.now()}.mp4`;
+const outputPath = `./hady-zen/assets/${Date.now()}.webp`;
             fs.writeFileSync(inputPath, stickerBuffer);
             await new Promise((resolve, reject) => {
                 ffmpeg(inputPath)
@@ -334,10 +330,10 @@ async function downloadMedia(msg) {
 // YEN AND LV UP
         addData(event.senderID);
         data[event.senderID].chat++;
-        if (data[event.senderID].chat % 10 === 0) {
+        if (data[event.senderID].chat % 6 === 0) {
             data[event.senderID].yen += 3;
-            data[event.senderID].exp += 10;
-            console.log(ayanokoji("yen") + `${data[event.senderID].nama} mendapatkan 3 Yen dan 10 Exp.`);
+            data[event.senderID].exp += 3;
+            console.log(ayanokoji("yen") + `${data[event.senderID].nama} mendapatkan 2 Yen dan 3 Exp.`);
         }
         if (data[event.senderID].exp >= 100) {
             data[event.senderID].exp -= 100;
@@ -361,7 +357,7 @@ const isAdmin = admin.includes(senderNum)
         if (body.toLowerCase() == "prefix") return api.sendMessage(`Awalan ${nama} adalah: ${awalan}`, event.threadID, event.messageID);
         if (body.toLowerCase().startsWith(nama.toLowerCase())) {
             const ijo = body.slice(nama.length) || " hai";
-            DyAI(ijo).then(jawaban => {
+            DyAI(ijo, event.senderID).then(jawaban => {
                 return api.sendMessage(jawaban, event.threadID, event.messageID);
             }).catch(e => {
                 console.log(e);
@@ -369,12 +365,12 @@ const isAdmin = admin.includes(senderNum)
             });
         };
         if (!body.startsWith(awalan)) return console.log(logo.chat + `${event.senderID}: ${body}`);
-        const cmd = body.slice(awalan.length).trim().split(/ +/g).shift().toLowerCase();
-        
+const parts = body.slice(awalan.length).trim().split(/ +/);
+const cmd = parts.shift().toLowerCase();
+const args = parts;
 // CMDS AYANOKOJI
         async function hady_cmd(cmd, api, event) {
-            const pipi = body?.replace(`${awalan}${cmd}`, "").trim();
-            const args = pipi?.split(" ");
+            const args = parts;
             const { saran } = require('./hady-zen/saran');
             try {
                 const skibidi = await api.getThreadInfo(event.threadID);
