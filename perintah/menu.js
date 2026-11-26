@@ -7,7 +7,7 @@ module.exports = {
     kategori: "info",
     penulis: "Hady Zen",
     peran: 0,
-    kuldown: 20,
+    kuldown: 10,
     tutor: ".menu <kosong/perintah>"
   },
 
