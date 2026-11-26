@@ -6,7 +6,6 @@ function deteksiFormat(buffer) {
   if (buffer[0] === 0x52 && buffer[1] === 0x49 && buffer[2] === 0x46 && buffer[3] === 0x46 && buffer[8] === 0x57 && buffer[9] === 0x45 && buffer[10] === 0x42 && buffer[11] === 0x50) return { ext: "webp", mime: "image/webp" }
   return null
 }
-
 function jadiBuffer(input) {
   if (!input) return null
   if (Buffer.isBuffer(input)) return input
@@ -19,7 +18,6 @@ function jadiBuffer(input) {
   }
   return null
 }
-
 async function ambilBufferFoto({ event }) {
   const kandidat = [
     event.repliedMedia,
@@ -29,12 +27,10 @@ async function ambilBufferFoto({ event }) {
     event.attachments?.[0],
     event.attachment
   ]
-
   for (const item of kandidat) {
     const buffer = jadiBuffer(item)
     if (buffer && buffer.length > 100 && deteksiFormat(buffer)) return buffer
   }
-
   return null
 }
 
