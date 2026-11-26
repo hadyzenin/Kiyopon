@@ -1,8 +1,8 @@
 {
   "name": "Kiyopon",
-  "author": "Hady Zen'in",
+  "author": "Hady Zen",
   "description": "Chatbot WhatsApp by hady",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "requires": true,
   "engines": {
@@ -17,11 +17,14 @@
     "express": "^5.3.0",
     "ffmpeg-static": "^5.3.0",
     "fluent-ffmpeg": "^2.1.3",
+    "form-data": "^4.0.6",
     "gradient-string": "^3.0.0",
     "moment-timezone": "^0.6.6",
+    "os": "^0.1.2",
     "pino": "^10.4.0",
     "readline": "^1.3.0",
-    "sharp": "^0.35.5"
+    "sharp": "^0.35.5",
+    "util": "^0.12.5"
   },
   "scripts": {
     "start": "node index.js",
