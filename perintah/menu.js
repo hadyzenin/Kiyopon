@@ -4,9 +4,10 @@ const path = require('path');
 module.exports = {
   hady: {
     nama: "menu",
+    kategori: "info",
     penulis: "Hady Zen",
     peran: 0,
-    kuldown: 10,
+    kuldown: 20,
     tutor: ".menu <kosong/perintah>"
   },
 
@@ -17,7 +18,7 @@ module.exports = {
     const jsFiles = files.filter(f => path.extname(f) === '.js');
     jsFiles.sort();
 
-    const commandList = { user: [], adminGroups: [], adminBot: [] };
+    const commandList = {};
     const commandInfo = {};
 
     for (const file of jsFiles) {
@@ -33,29 +34,33 @@ module.exports = {
           commandInfo[namaCmd] = hady;
           break;
         }
-        const peran = parseInt(hady.peran, 10);
-        if (peran === 0) commandList.user.push(namaCmd);
-        else if (peran === 1) commandList.adminGroups.push(namaCmd);
-        else if (peran === 2) commandList.adminBot.push(namaCmd);
+        const kategori = (hady.kategori || "cmd").toLowerCase();
+        if (!commandList[kategori]) commandList[kategori] = [];
+        commandList[kategori].push(namaCmd);
 
       } catch (e) {}
     }
     if (args[0] && commandInfo[args[0].toLowerCase()]) {
       const info = commandInfo[args[0].toLowerCase()];
       return api.sendMessage(
-        `𝗜𝗻𝗳𝗼 𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵\n\n` +
+        `*Info perintah*\n\n` +
         `- Nama: ${info.nama}\n` +
         `- Penulis: ${info.penulis || "-"}\n` +
         `- Peran: ${info.peran}\n` +
         `- Kuldown: ${info.kuldown} detik\n` +
+        `- Harga: ${info.harga ? info.harga + " yen" : "Gratis"}\n` +
         `- Tutor: ${info.tutor || "-"}`,
         threadID, messageID
       );
     } else if (args[0]) {
       return api.sendMessage(`Perintah .${args[0]} tidak ada.`, threadID, messageID);
     } else {
-      const description = `Gunakan ${global.Ayanokoji.awalan}𝗺𝗲𝗻𝘂 <𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵> untuk informasi lebih lanjut.`;
-      const message = `𝗨𝗦𝗘𝗥\n${commandList.user.join(', ') || 'Tidak ada perintah.'}\n\n𝗔𝗗𝗠𝗜𝗡 𝗚𝗖\n${commandList.adminGroups.join(', ') || 'Tidak ada perintah.'}\n\n𝗔𝗗𝗠𝗜𝗡 𝗕𝗢𝗧\n${commandList.adminBot.join(', ') || 'Tidak ada perintah.'}\n\n\n${description}`;
+      const description = `Gunakan ${global.Ayanokoji.awalan}*menu <perintah>* untuk informasi lebih lanjut.`;
+      let kategoriText = "";
+      for (const kategori of Object.keys(commandList).sort()) {
+        kategoriText += `*${kategori.toUpperCase()}*\n${commandList[kategori].join(', ')}\n\n`;
+      }
+      const message = `${kategoriText}${description}`;
       return api.sendMessage(message, threadID, messageID);
     }
   }
