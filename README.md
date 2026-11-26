@@ -24,44 +24,33 @@ module.exports = {
   hady: {
     nama: "contoh",
     penulis: "Hady Zen",
-    kuldown: 5,
+    kuldown: 10,
     peran: 0,
-    tutor: "daftar full fungsi"
+    tutor: ".contoh <kosong/reply/cari/jumlah>",
+    kategori: "info"
   },
-  Ayanokoji: async function ({ api, event, args, getData, setData, getAllData }) {
-    api.sendMessage("", event.threadID, event.messageID)
-    api.sendMessage("", event.threadID, null)
-    api.sendImage("", "", event.threadID, event.messageID)
-    api.sendImage("", event.threadID)
-    api.sendImage("", event.threadID, event.messageID)
-    api.sendVideo("", "", event.threadID, event.messageID)
-    api.sendVideo("", event.threadID)
-    api.sendVideo("", event.threadID, event.messageID)
-    api.sendSticker("", event.threadID, event.messageID)
-    api.sendSticker("", event.threadID)
-    api.sendAudio("", event.threadID, event.messageID, false)
-    api.sendAudio("", event.threadID, event.messageID, true)
-    api.sendFile("", "", event.threadID, event.messageID)
-    api.sendFile("", "", event.threadID)
-    api.react("", event.threadID, event.messageID)
-    api.deleteMessage(event.threadID, event.messageID)
-    api.sendTyping(event.threadID)
-    api.getGroupInfo(event.threadID)
-    api.getProfilePicture(event.senderID)
-    api.getProfilePicture(event.threadID)
+  Ayanokoji: async function ({ api, event, args, getData, setData }) {
+    api.sendMessage("text", event.threadID, event.messageID)
+    api.sendImage("image","text", event.threadID, event.messageID)
+    api.sendVideo("video", "text", event.threadID, event.messageID)
+    api.sendSticker("stiker", event.threadID, event.messageID)
+    api.sendAudio(event.threadID, event.messageID)
+    api.sendDocument("file", event.threadID, event.messageID)
+    api.setMessageReaction("emot", event.threadID, event.messageID)
+    api.getThreadInfo(event.threadID)
     getData(event.senderID)
     setData(event.senderID, {})
-    getAllData()
     event.threadID
     event.messageID
     event.senderID
+    event.body
     event.isGroup
-    event.type
-    event.reply
-    event.replySender
+    event.isFromMe
+    event.isReply
+    event.repliedSender
+    event.repliedMedia
+    event.attachments
     args.join(" ")
-    args[0]
-    args.slice(1).join(" ")
   }
 };
 ```
