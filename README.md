@@ -27,7 +27,8 @@ module.exports = {
     kuldown: 10,
     peran: 0,
     tutor: ".contoh <kosong/reply/cari/jumlah>",
-    kategori: "info"
+    kategori: "info",
+    harga: 0
   },
   Ayanokoji: async function ({ api, event, args, getData, setData }) {
     api.sendMessage("text", event.threadID, event.messageID)
