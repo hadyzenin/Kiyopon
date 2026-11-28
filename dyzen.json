@@ -6,7 +6,7 @@
   "warna": "#4682B4",
   "aikey": "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",
   "maintain": false,
-  "chatdm": true,
+  "chatdm": false,
   "imgbbkey": "f0f59643d6f29a07013b1c096fa56e2e",
   "setting": {
     "selfListen": false,
