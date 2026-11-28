@@ -338,7 +338,7 @@ async function downloadMedia(msg) {
         if (data[event.senderID].exp >= 100) {
             data[event.senderID].exp -= 100;
             data[event.senderID].level += 1;
-            await api.sendMessage(`Selamat ${data[event.senderID].nama}, Kamu telah naik ke level ${data[event.senderID].level}!`, event.threadID);
+            await api.sendMessage(`Selamat *${data[event.senderID].nama}*, Kamu telah naik ke level ${data[event.senderID].level}!`, event.threadID);
             console.log(ayanokoji('level') + `${data[event.senderID].nama} naik level.`);
         }
         simpan();
@@ -404,7 +404,7 @@ const args = parts;
                 if (!ditemukan) {
                     const mirip = saran(cmd, listCmd);
                     console.log(logo.info + `Tidak ada perintah ${cmd}.`);
-                    return api.sendMessage(mirip ? `Mungkin maksud kamu ${awalan}${mirip}?` : `Perintah '${cmd}' tidak ada, gunakan ${awalan}menu buat lihat daftar perintah.`, event.threadID, event.messageID);
+                    return api.sendMessage(mirip ? `Mungkin maksud kamu *${awalan}${mirip}*?` : `Perintah *${cmd}* tidak ada, gunakan *${awalan}menu* buat lihat daftar perintah.`, event.threadID, event.messageID);
                 }
             } catch (error) {
                 console.log(logo.error + "Perintah error: " + error.message);
