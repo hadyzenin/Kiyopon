@@ -107,7 +107,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 5,
     peran: 0,
-    tutor: ".pin <cari>",
+    tutor: "<cari>",
     kategori: "media",
     harga: 1
   },
@@ -118,14 +118,14 @@ module.exports = {
     if (/^\d+$/.test(raw)) {
       const sesi = global.pinSessions.get(key)
       if (!sesi) {
-        return api.sendMessage("Belum ada sesi, cari dulu .pin kucing, baru .pin 1", event.threadID, event.messageID)
+        return api.sendMessage("Belum ada sesi, pakai dulu *.pin <cari>*, baru *.pin 1-12*.", event.threadID, event.messageID)
       }
       if (Date.now() - sesi.created > CONFIG.durasiSesi) {
         global.pinSessions.delete(key)
       }
       const index = parseInt(raw) - 1
       if (index < 0 || index >= sesi.buffers.length) {
-        return api.sendMessage(`Nomor gak ada. Pilih 1 sampai ${sesi.buffers.length}`, event.threadID, event.messageID)
+        return api.sendMessage(`Nomor gak ada, pilih *1 sampai ${sesi.buffers.length}*.`, event.threadID, event.messageID)
       }
       return api.sendImage(
         sesi.buffers[index],
@@ -136,17 +136,17 @@ module.exports = {
     }
 
     if (/^\d+\s+\d+/.test(raw)) {
-      return api.sendMessage("Cuma boleh pilih 1 foto, contoh: .pin 2", event.threadID, event.messageID)
+      return api.sendMessage("Cuma boleh pilih 1 foto, contoh *.pin 6*", event.threadID, event.messageID)
     }
 
     const query = raw
     if (!query) {
-      return api.sendMessage("Isi yang mau dicari, contoh: .pin kucing", event.threadID, event.messageID)
+      return api.sendMessage("Isi yang mau dicari, contoh *.pin kucing*", event.threadID, event.messageID)
     }
 
     const userData = getData(event.senderID);
     if (!userData || (userData.yen || 0) < 1) {
-      return api.sendMessage("Yen kamu tidak cukup, butuh 1 yen buat pin.", event.threadID, event.messageID);
+      return api.sendMessage("Yen kamu tidak cukup, butuh *1 yen* buat pin.", event.threadID, event.messageID);
     }
 
     try {
@@ -157,13 +157,13 @@ module.exports = {
 
       const buffers = await downloadGambar(links)
       if (buffers.length === 0) {
-        return api.sendMessage("Gambarnya ke-block Pinterest, coba lagi 1 menit.", event.threadID, event.messageID)
+        return api.sendMessage("Gambarnya *ke-block* Pinterest, coba lagi dalam 1 menit.", event.threadID, event.messageID)
       }
 
       const canvas = await buatCanvas(buffers)
       const caption =
-        `Pilih gambar, ketik .pin 1 - 12\n` +
-        `Berlaku sampai 1 menit.`
+        `Pilih gambar, ketik *.pin 1 - 12*\n` +
+        `Berlaku sampai *1 menit*.`
 
       await api.sendImage(canvas, caption, event.threadID, event.messageID)
 
@@ -172,7 +172,7 @@ module.exports = {
       global.pinSessions.set(key, { buffers, query, created: Date.now() })
       setTimeout(() => global.pinSessions.delete(key), CONFIG.durasiSesi)
     } catch (e) {
-      return api.sendMessage(`Gak ada gambar itu.`, event.threadID, event.messageID)
+      return api.sendMessage(`Tidak ada hasil dari pencarian kamu.`, event.threadID, event.messageID)
     }
   }
-}
+      }
