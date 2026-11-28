@@ -17,7 +17,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 10,
     peran: 0,
-    tutor: ".setf <kode/list>",
+    tutor: "<kode/list>",
     kategori: "alat",
     harga: 2
   },
@@ -27,7 +27,7 @@ module.exports = {
 
     if (!code) {
       return api.sendMessage(
-        "Masukkan kode negara. Contoh: setf jp.",
+        "Masukkan kode negara, contoh *.setf jp* atau pakai *.setf list* buat lihat daftar bendera.",
         event.threadID,
         event.messageID
       );
@@ -35,7 +35,7 @@ module.exports = {
 
     if (code === "list") {
       return api.sendMessage(
-        `Daftar bendera (${flags.length})\n\n${flags.join(", ")}`,
+        `*Daftar bendera (${flags.length})*\n\n${flags.join(", ")}`,
         event.threadID,
         event.messageID
       );
@@ -43,7 +43,7 @@ module.exports = {
 
     if (!flags.includes(code)) {
       return api.sendMessage(
-        "Kode flag tidak tersedia. Gunakan: setf list",
+        "Kode flag tidak ada, gunakan *.setf list* buat lihat daftar bendera.",
         event.threadID,
         event.messageID
       );
@@ -51,7 +51,7 @@ module.exports = {
 
     const userData = getData(event.senderID);
     if (!userData || (userData.yen || 0) < 2) {
-      return api.sendMessage("Yen kamu tidak cukup, butuh 2 yen buat ganti bendera.", event.threadID, event.messageID);
+      return api.sendMessage("Yen kamu tidak cukup, butuh *2 yen* buat ganti bendera.", event.threadID, event.messageID);
     }
 
     setUser(event.senderID, "flag", code);
