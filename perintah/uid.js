@@ -4,7 +4,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 10,
     peran: 0,
-    tutor: ".uid <reply/kosong>",
+    tutor: "<reply/kosong>",
     kategori: "info"
   },
   Ayanokoji: async function ({ api, event }) {
