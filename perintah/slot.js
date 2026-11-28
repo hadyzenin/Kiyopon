@@ -4,7 +4,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 20,
     peran: 0,
-    tutor: ".slot <jumlah>",
+    tutor: "<taruhan>",
     kategori: "game"
   },
 
@@ -12,12 +12,8 @@ module.exports = {
     const senderID = event.senderID;
     const bet = parseInt(args[0]) || 5;
 
-    if (isNaN(bet) || bet <= 0) {
-      return api.sendMessage("Gunakan <jumlah>, contoh: slot 5", event.threadID, event.messageID);
-    }
-
     if (bet < 5) {
-      return api.sendMessage("Minimal taruhan 5 yen!", event.threadID, event.messageID);
+      return api.sendMessage("Minimal taruhan *5 yen*.", event.threadID, event.messageID);
     }
 
     const userData = getData(senderID);
@@ -69,7 +65,7 @@ module.exports = {
     } else {
       setUser(senderID, 'yen', userData.yen - bet);
     }
-    const msg = `🎰 ┃ SLOT MACHINE ┃ 🎰
+    const msg = `🎰 ┃ *SLOT MACHINE* ┃ 🎰
 ━━━━━━━━━━━━━━━
 [ ${a} | ${b} | ${c} ]
 
