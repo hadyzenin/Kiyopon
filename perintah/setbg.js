@@ -50,7 +50,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 10,
     peran: 0,
-    tutor: ".setbg <reply gambar>",
+    tutor: "<reply gambar>",
     kategori: "alat",
     harga: 2
   },
@@ -60,7 +60,7 @@ module.exports = {
 
     if (yen < 2) {
       return api.sendMessage(
-        "Minimal memiliki 2¥ untuk mengganti background.",
+        "Kamu butuh *2 yen* untuk mengganti background.",
         event.threadID,
         event.messageID
       );
@@ -71,7 +71,7 @@ module.exports = {
 
       if (!mentah) {
         return api.sendMessage(
-          "Reply sebuah gambar untuk dijadikan background.",
+          "*Reply sebuah gambar* untuk dijadikan background.",
           event.threadID,
           event.messageID
         );
