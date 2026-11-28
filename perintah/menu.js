@@ -8,7 +8,7 @@ module.exports = {
     penulis: "Hady Zen",
     peran: 0,
     kuldown: 10,
-    tutor: ".menu <kosong/perintah>"
+    tutor: "<kosong/perintah>"
   },
 
   Ayanokoji: async function ({ api, event, args }) {
@@ -49,11 +49,11 @@ module.exports = {
         `- Peran: ${info.peran}\n` +
         `- Kuldown: ${info.kuldown} detik\n` +
         `- Harga: ${info.harga ? info.harga + " yen" : "Gratis"}\n` +
-        `- Tutor: ${info.tutor || "-"}`,
+        `- Tutor: ${global.Ayanokoji.awalan}${info.nama} ${info.tutor || "<kosong>"}`,
         threadID, messageID
       );
     } else if (args[0]) {
-      return api.sendMessage(`Perintah .${args[0]} tidak ada.`, threadID, messageID);
+      return api.sendMessage(`Perintah *${args[0]}* tidak ada.`, threadID, messageID);
     } else {
       const description = `Gunakan ${global.Ayanokoji.awalan}*menu <perintah>* untuk informasi lebih lanjut.`;
       let kategoriText = "";
