@@ -50,14 +50,14 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 10,
     peran: 0,
-    tutor: ".imgbb <reply foto>",
+    tutor: "<reply foto>",
     kategori: "media"
   },
   Ayanokoji: async function ({ api, event }) {
     try {
       const mentah = await ambilBufferFoto({ event })
       if (!mentah) {
-        return api.sendMessage("Kamu harus mereply ke sebuah gambar.", event.threadID, event.messageID)
+        return api.sendMessage("Kamu harus membalas ke sebuah gambar.", event.threadID, event.messageID)
       }
 
       const key = global.Ayanokoji?.imgbbkey || global.imgbbkey || global.config?.imgbbkey
