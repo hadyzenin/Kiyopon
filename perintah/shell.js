@@ -6,7 +6,7 @@ module.exports = {
     kuldown: 6,
     peran: 2,
     penulis: "Hady Zen",
-    tutor: ".shell <kode>",
+    tutor: "<kode>",
   },
 
   Ayanokoji: async function ({ api, event, args }) {
