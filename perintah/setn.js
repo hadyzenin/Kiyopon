@@ -4,18 +4,12 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 10,
     peran: 0,
-    tutor: ".setn <nama>",
+    tutor: "<nama>",
     kategori: "alat",
     harga: 2
   },
 
-  Ayanokoji: async function ({
-    api,
-    event,
-    args,
-    setUser,
-    getData
-  }) {
+  Ayanokoji: async function ({ api, event, args, setUser, getData }) {
 
     const nama = args.join(" ");
 
@@ -32,7 +26,7 @@ module.exports = {
     if (nama.length > 10) {
 
       return api.sendMessage(
-        "Nama kamu lebih dari 10 huruf.",
+        "Nama kamu lebih dari *10 huruf*.",
         event.threadID,
         event.messageID
       );
@@ -44,7 +38,7 @@ module.exports = {
     if (yen < 2) {
 
       return api.sendMessage(
-        "Kamu membutuhkan 2 yen untuk mengganti nama.",
+        "Kamu membutuhkan *2 yen* untuk mengganti nama.",
         event.threadID,
         event.messageID
       );
@@ -64,10 +58,9 @@ module.exports = {
     );
 
     api.sendMessage(
-      `Kamu berhasil mengganti nama jadi ${nama}`,
+      `Kamu berhasil mengganti nama jadi *${nama}*.`,
       event.threadID,
       event.messageID
     );
-
   }
 };
