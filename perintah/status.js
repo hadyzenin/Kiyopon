@@ -40,7 +40,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 30,
     peran: 0,
-    tutor: ".status", 
+    tutor: "", 
   },
 
   Ayanokoji: async function ({ api, event, getData }) {
