@@ -48,7 +48,7 @@ module.exports = {
         `- Penulis: ${info.penulis || "-"}\n` +
         `- Peran: ${info.peran}\n` +
         `- Kuldown: ${info.kuldown} detik\n` +
-        `- Harga: ${info.harga ? info.harga + " yen" : "Gratis"}\n` +
+        `- Harga: ${info.harga ? info.harga + " yen" : "gratis"}\n` +
         `- Tutor: ${global.Ayanokoji.awalan}${info.nama} ${info.tutor || "<kosong>"}`,
         threadID, messageID
       );
