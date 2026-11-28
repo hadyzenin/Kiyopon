@@ -16,8 +16,8 @@ Github: https://github.com/hadyzenin
 ## INFO
 
 Versi nodejs harus v20 <br>
-Login menggunakan kode pairing <br>
-Data ada di hady.db format data json <br>
+Login hanya bisa menggunakan kode pairing <br>
+Masukkan nomor dengan format 628XX bukan 08XX atau +628XX <br><br>
 Mentahan perintah 
 ```hady
 module.exports = {
