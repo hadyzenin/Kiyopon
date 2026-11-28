@@ -33,7 +33,7 @@ Ayanokoji: async function ({ api, event, getStream }) {
      const nino = Date.now();
      const raffa = nino - chika;
 
-     const hadi = `${ping(raffa)} KIYOPON V${version}\n`
+     const hadi = `${ping(raffa)} *KIYOPON V${version}*\n`
                  + `\n- Uptime: ${arif}`
                  + `\n- Ram: ${riley}`
                  + `\n- Disk: ${edi}`
