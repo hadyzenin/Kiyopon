@@ -4,7 +4,7 @@ module.exports = {
         kuldown: 20,
         peran: 0,
         penulis: "Hady Zen",
-        tutor: ".toimg <balas ke stiker>",
+        tutor: "<balas ke stiker>",
         kategori: "alat",
         harga: 2
     },
@@ -18,7 +18,7 @@ module.exports = {
 
         const userData = getData(event.senderID);
         if (!userData || (userData.yen || 0) < 2) {
-            return api.sendMessage("Yen kamu tidak cukup, butuh 2 yen buat convert stiker.", threadID, messageID);
+            return api.sendMessage("Yen kamu tidak cukup, butuh *2 yen* buat convert stiker.", threadID, messageID);
         }
 
         await api.sendImage(media.buffer, threadID, messageID);
