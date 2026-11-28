@@ -4,7 +4,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 30,
     peran: 0,
-    tutor: ".lb",
+    tutor: "",
     kategori: "game"
   },
 
@@ -41,7 +41,7 @@ module.exports = {
       return t.trim();
     }
 
-    const msg = `${format(topYen, "yen", "TOP 6 YEN")}\n\n${format(topChat, "chat", "TOP 6 CHAT")}\n\n${format(topLevel, "level", "TOP 6 LEVEL")}`;
+    const msg = `${format(topYen, "yen", "*TOP 6 YEN*")}\n\n${format(topChat, "chat", "*TOP 6 CHAT*")}\n\n${format(topLevel, "level", "*TOP 6 LEVEL*")}`;
 
     return api.sendMessage(msg, event.threadID, event.messageID);
   }
