@@ -50,7 +50,7 @@ module.exports = {
     penulis: "Hady Zen",
     kuldown: 10,
     peran: 0,
-    tutor: ".setn <reply gambar>",
+    tutor: "<reply gambar>",
     kategori: "alat",
     harga: 2
   },
@@ -60,7 +60,7 @@ module.exports = {
 
     if (yen < 2) {
       return api.sendMessage(
-        "Minimal memiliki 2¥ untuk mengganti foto profil.",
+        "Kamu butuh *2 yen* untuk mengganti foto profil.",
         event.threadID,
         event.messageID
       );
